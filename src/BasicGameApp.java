@@ -1,7 +1,7 @@
 //Basic Game Application
 //Version 2
 // Basic Object, Image, Movement
-// Astronaut moves to the right.
+// Fish moves to the right.
 // Threaded
 
 //K. Chun 8/2018
@@ -38,11 +38,16 @@ public class BasicGameApp implements Runnable {
    public JPanel panel;
    
 	public BufferStrategy bufferStrategy;
-	public Image astroPic;
+	public Image nemoPic;
+    public Image doryPic;
+    public Image brucePic;
 
    //Declare the objects used in the program
    //These are things that are made up of more than one variable type
-	private Astronaut astro;
+	public Fish nemo;
+    public Dory dory;
+    public Shark bruce;
+    public Image backgroundPic;
 
 
    // Main method definition
@@ -62,9 +67,12 @@ public class BasicGameApp implements Runnable {
       setUpGraphics();
        
       //variable and objects
-      //create (construct) the objects needed for the game and load up 
-		astroPic = Toolkit.getDefaultToolkit().getImage("astronaut.png"); //load the picture
-		astro = new Astronaut(10,100);
+      //create (construct) the objects needed for the game and load up
+		nemo = new Fish(100,100);
+        dory = new Fish(10,100);
+        nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
+        doryPic = Toolkit.getDefaultToolkit().getImage("Dory.png"); //load the picture
+        backgroundPic = Toolkit.getDefaultToolkit().getImage("Water.png"); //load the picture
 
 
 	}// BasicGameApp()
@@ -92,7 +100,8 @@ public class BasicGameApp implements Runnable {
 	public void moveThings()
 	{
       //calls the move( ) code in the objects
-		astro.move();
+		nemo.move();
+        dory.move();
 
 	}
 	
@@ -141,10 +150,11 @@ public class BasicGameApp implements Runnable {
 	private void render() {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
 
-      //draw the image of the astronaut
-		g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-
+      //draw the image of the Fish
+		g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
+        g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
 		g.dispose();
 
 		bufferStrategy.show();
