@@ -1,6 +1,4 @@
-
-
-public class Dory {
+public class Shark {
 
 
     //VARIABLE DECLARATION SECTION
@@ -23,13 +21,13 @@ public class Dory {
 
     //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
     // if you put in a String, an int and an int the program will use this constructor instead of the one above.
-    public Dory(int pXpos, int pYpos) {
+    public Shark(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 60;
-        height = 60;
+        width = 200;
+        height = 200;
         isAlive = true;
 
     } // constructor
