@@ -12,7 +12,8 @@ public class Fish2 {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;
+    hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
 
 
     // METHOD DEFINITION SECTION
@@ -31,13 +32,33 @@ public class Fish2 {
         width = 60;
         height = 60;
         isAlive = true;
+        hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
+
 
     } // constructor
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
+
+        if (xpos < 0) {
+            dx = -dx;
+
+        }
+        if (xpos > 970) {
+            dx = -dx;
+
+        }
+        if (ypos < 0) {
+            dy = -dy;
+
+        }
+        if (ypos > 700-height) {
+            dy = -dy;
+        }
         xpos = xpos + dx;
         ypos = ypos + dy;
+        hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
+
 
     }
 }

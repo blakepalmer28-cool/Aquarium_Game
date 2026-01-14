@@ -104,10 +104,41 @@ public class BasicGameApp implements Runnable {
 	{
       //calls the move( ) code in the objects
 		nemo.move();
+        nemo.dx = 2;
         dory.move();
+        dory.dx=2;
         bruce.move();
+        bruce.dx=3;
+        crashing();
 
 	}
+
+    public void crashing() {
+        //if astros crash into each other
+        if (Shark.hitbox.intersects(Fish.hitbox) && Fish.isAlive == true) {
+            System.out.println("Nemo Eliminated");
+            Shark.dx = -Shark.dx;
+            Fish.dx = -Fish.dx;
+            Shark.dy = -Shark.dy;
+            Fish.dy = -Fish.dy;
+            Fish.isAlive = false;
+
+        }
+        if (Shark.hitbox.intersects(Fish2.hitbox) && Fish2.isCrashing == false) {
+            System.out.println("Dory Eliminated");
+            Shark.dx = -Shark.dx;
+            Fish2.dx = -Fish.dx;
+            Shark.dy = -Shark.dy;
+            Fish2.dy = -Fish2.dy;
+            Fish2.isAlive = false;
+            Fish2.height = Fish2.height +10;
+            Fish2.isCrashing = true;
+
+        }
+
+        if (!Fish.hitbox.intersects(Fish2.hitbox)){
+            asteroid2.isCrashing = false;
+        }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){

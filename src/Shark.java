@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Shark {
 
 
@@ -26,7 +28,7 @@ public class Shark {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 200;
+        width = 250;
         height = 200;
         isAlive = true;
 
@@ -34,8 +36,26 @@ public class Shark {
 
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
+
+        if (xpos < 0) {
+            dx = -dx;
+
+        }
+        if (xpos > 970) {
+            dx = -dx;
+
+        }
+        if (ypos < 0) {
+            dy = -dy;
+
+        }
+        if (ypos > 700-height) {
+            dy = -dy;
+        }
+
         xpos = xpos + dx;
         ypos = ypos + dy;
-
+        hitbox = new Rectangle(xpos,ypos,width,height);
     }
+
 }
