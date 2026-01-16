@@ -1,4 +1,4 @@
-
+import java.awt.*;
 
 public class Fish2 {
 
@@ -13,7 +13,7 @@ public class Fish2 {
     public int width;
     public int height;
     public boolean isAlive;
-    hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
+    public Rectangle hitbox;
 
 
     // METHOD DEFINITION SECTION
@@ -29,8 +29,8 @@ public class Fish2 {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 60;
-        height = 60;
+        width = 90;
+        height = 80;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
 

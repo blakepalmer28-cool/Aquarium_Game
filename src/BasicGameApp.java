@@ -95,7 +95,7 @@ public class BasicGameApp implements Runnable {
 
          moveThings();  //move all the game objects
          render();  // paint the graphics
-         pause(20); // sleep for 10 ms
+         pause(2); // sleep for 10 ms
 		}
 	}
 
@@ -151,7 +151,7 @@ public class BasicGameApp implements Runnable {
    }
 
    //Graphics setup method
-   private void setUpGraphics() {
+   public void setUpGraphics() {
       frame = new JFrame("Application Template");   //Create the program window or frame.  Names it.
    
       panel = (JPanel) frame.getContentPane();  //sets up a JPanel which is what goes in the frame
@@ -191,7 +191,9 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
         g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
         g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
-		g.dispose();
+        g.drawRect(Fish.hitbox.x, Fish.hitbox.y, Fish.hitbox.width, Fish.hitbox.height);
+        g.drawRect(Fish2.hitbox.x, Fish2.hitbox.y, Fish2.hitbox.width, Fish2.hitbox.height);
+        g.dispose();
 
 		bufferStrategy.show();
 	}

@@ -12,7 +12,8 @@ public class Shark {
     public int dy;                    //the speed of the hero in the y direction
     public int width;
     public int height;
-    public boolean isAlive;            //a boolean to denote if the hero is alive or dead.
+    public boolean isAlive;//a boolean to denote if the hero is alive or dead.
+    public Rectangle hitbox;
 
 
     // METHOD DEFINITION SECTION
@@ -28,9 +29,11 @@ public class Shark {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 250;
+        width = 300;
         height = 200;
         isAlive = true;
+        hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
+
 
     } // constructor
 
