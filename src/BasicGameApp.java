@@ -115,30 +115,31 @@ public class BasicGameApp implements Runnable {
 
     public void crashing() {
         //if astros crash into each other
-        if (Shark.hitbox.intersects(Fish.hitbox) && Fish.isAlive == true) {
+        if (bruce.hitbox.intersects(nemo.hitbox) && nemo.isAlive == true) {
             System.out.println("Nemo Eliminated");
-            Shark.dx = -Shark.dx;
-            Fish.dx = -Fish.dx;
-            Shark.dy = -Shark.dy;
-            Fish.dy = -Fish.dy;
-            Fish.isAlive = false;
+            bruce.dx = -bruce.dx;
+            nemo.dx = -nemo.dx;
+            bruce.dy = -bruce.dy;
+            nemo.dy = -nemo.dy;
+            nemo.isAlive = false;
 
         }
-        if (Shark.hitbox.intersects(Fish2.hitbox) && Fish2.isCrashing == false) {
+        if (bruce.hitbox.intersects(dory.hitbox) && dory.isCrashing == false) {
             System.out.println("Dory Eliminated");
-            Shark.dx = -Shark.dx;
-            Fish2.dx = -Fish.dx;
-            Shark.dy = -Shark.dy;
-            Fish2.dy = -Fish2.dy;
-            Fish2.isAlive = false;
-            Fish2.height = Fish2.height +10;
-            Fish2.isCrashing = true;
+            bruce.dx = -bruce.dx;
+            dory.dx = -dory.dx;
+            bruce.dy = -bruce.dy;
+            dory.dy = -dory.dy;
+            dory.isAlive = false;
+            dory.height = dory.height + 10;
+            dory.isCrashing = true;
 
         }
 
-        if (!Fish.hitbox.intersects(Fish2.hitbox)){
-            asteroid2.isCrashing = false;
+        if (!nemo.hitbox.intersects(dory.hitbox)) {
+            dory.isCrashing = false;
         }
+    }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
    public void pause(int time ){
@@ -191,8 +192,8 @@ public class BasicGameApp implements Runnable {
 		g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
         g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
         g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
-        g.drawRect(Fish.hitbox.x, Fish.hitbox.y, Fish.hitbox.width, Fish.hitbox.height);
-        g.drawRect(Fish2.hitbox.x, Fish2.hitbox.y, Fish2.hitbox.width, Fish2.hitbox.height);
+        g.drawRect(nemo.hitbox.x, nemo.hitbox.y, nemo.hitbox.width, nemo.hitbox.height);
+        g.drawRect(dory.hitbox.x, dory.hitbox.y, dory.hitbox.width, dory.hitbox.height);
         g.dispose();
 
 		bufferStrategy.show();

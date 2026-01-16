@@ -19,6 +19,7 @@ public class Fish {
     public Rectangle hitbox;
 
 
+
     // METHOD DEFINITION SECTION
 
     // Constructor Definition
@@ -36,6 +37,7 @@ public class Fish {
         height = 60;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
+
 
     } // constructor
 

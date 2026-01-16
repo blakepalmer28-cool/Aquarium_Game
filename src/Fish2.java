@@ -14,6 +14,7 @@ public class Fish2 {
     public int height;
     public boolean isAlive;
     public Rectangle hitbox;
+    public boolean isCrashing;
 
 
     // METHOD DEFINITION SECTION
