@@ -70,7 +70,7 @@ public class BasicGameApp implements Runnable {
       //create (construct) the objects needed for the game and load up
 		nemo = new Fish(700,100);
         dory = new Fish2(500,100);
-        bruce = new Shark(100,100);
+        bruce = new Shark(50,100);
         //images
         nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
         doryPic = Toolkit.getDefaultToolkit().getImage("Dory.png"); //load the picture
@@ -108,7 +108,7 @@ public class BasicGameApp implements Runnable {
         dory.move();
         dory.dx=2;
         bruce.move();
-        bruce.dx=3;
+        bruce.dx=1;
         crashing();
 
 	}
@@ -122,17 +122,22 @@ public class BasicGameApp implements Runnable {
             bruce.dy = -bruce.dy;
             nemo.dy = -nemo.dy;
             nemo.isAlive = false;
+            nemo.xpos = -222;
+            nemo.ypos = -222;
+            render();
 
         }
         if (bruce.hitbox.intersects(dory.hitbox) && dory.isCrashing == false) {
-            System.out.println("Dory Eliminated");
+                System.out.println("Dory Eliminated");
             bruce.dx = -bruce.dx;
             dory.dx = -dory.dx;
             bruce.dy = -bruce.dy;
             dory.dy = -dory.dy;
             dory.isAlive = false;
-            dory.height = dory.height + 10;
+            dory.xpos = -222;
+            dory.ypos = -222;
             dory.isCrashing = true;
+
 
         }
 

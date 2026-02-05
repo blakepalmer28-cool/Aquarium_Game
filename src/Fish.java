@@ -33,8 +33,8 @@ public class Fish {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 60;
-        height = 60;
+        width = 50;
+        height = 50;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
 

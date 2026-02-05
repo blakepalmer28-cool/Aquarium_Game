@@ -28,7 +28,7 @@ public class Shark {
     public Shark(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
+        dx =2;
         dy =0;
         width = 300;
         height = 200;

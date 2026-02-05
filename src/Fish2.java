@@ -46,14 +46,14 @@ public class Fish2 {
 
         }
         if (xpos > 970) {
-            dx = -dx;
+            dx=-dx;
 
         }
         if (ypos < 0) {
             dy = -dy;
 
         }
-        if (ypos > 700-height) {
+        if (ypos > 700 - height) {
             dy = -dy;
         }
         xpos = xpos + dx;
