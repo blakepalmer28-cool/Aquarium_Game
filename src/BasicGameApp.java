@@ -29,8 +29,8 @@ public class BasicGameApp implements Runnable {
    //You can set their initial values too
    
    //Sets the width and height of the program window
-	final int WIDTH = 1000;
-	final int HEIGHT = 700;
+	final int WIDTH = 1920;
+	final int HEIGHT = 1080;
 
    //Declare the variables needed for the graphics
 	public JFrame frame;
@@ -116,7 +116,6 @@ public class BasicGameApp implements Runnable {
 
       //for the moment we will loop things forever.
 		while (true) {
-
          moveThings();  //move all the game objects
          render();  // paint the graphics
          pause(2); // sleep for 10 ms
@@ -124,30 +123,36 @@ public class BasicGameApp implements Runnable {
 	}
 
 
-	public void moveThings()
-	{
-      //calls the move( ) code in the objects
-		nemo.move();
+	public void moveThings() {
+        //calls the move( ) code in the objects
+        nemo.move();
         //nemo.dx = 2;
         dory.move();
         //dory.dx=2;
         bruce.move();
         //bruce.dx=1;
-        crashing();
+        if(dory.isAlive==false && nemo.isAlive==false){
+            bruce.dx=0;
+            bruce.dy=0;
+        }
 
-	}
+        crashing();
+    }
+
+
+
 
     public void crashing() {
-        //if astros crash into each other
+        //if fish crash into each otherr
         if (bruce.hitbox.intersects(nemo.hitbox) && nemo.isAlive == true) {
             System.out.println("Nemo Eliminated");
             bruce.dx = -bruce.dx;
-            nemo.dx = -nemo.dx;
+            nemo.dx = 0;
             bruce.dy = -bruce.dy;
-            nemo.dy = -nemo.dy;
+            nemo.dy = 0;
             nemo.isAlive = false;
-            nemo.xpos = -22222;
-            nemo.ypos = -22222;
+            nemo.xpos = -222;
+            nemo.ypos = -222;
 
 
 
@@ -155,9 +160,9 @@ public class BasicGameApp implements Runnable {
         if (bruce.hitbox.intersects(dory.hitbox) && dory.isCrashing == false) {
                 System.out.println("Dory Eliminated");
             bruce.dx = -bruce.dx;
-            dory.dx = -dory.dx;
+            dory.dx = 0;
             bruce.dy = -bruce.dy;
-            dory.dy = -dory.dy;
+            dory.dy = 0;
             dory.isAlive = false;
             dory.xpos = -222;
             dory.ypos = -222;
@@ -166,12 +171,7 @@ public class BasicGameApp implements Runnable {
 
         }
 
-        if (!bruce.hitbox.intersects(dory.hitbox)) {
-            dory.isCrashing = false;
-        }
-        if(bruce.isAlive && dory.isAlive) {
 
-        }
     }
 	
    //Pauses or sleeps the computer for the amount specified in milliseconds
@@ -220,19 +220,30 @@ public class BasicGameApp implements Runnable {
 		Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
 		g.clearRect(0, 0, WIDTH, HEIGHT);
         g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
+        g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
+        if (nemo.isAlive) {
+            g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
+        }
+        if(dory.isAlive){
+            g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
+        }
+        if (nemo.isAlive==false && dory.isAlive==false) {
+            g.drawImage(gameover, 0, 0, WIDTH, HEIGHT, null);
+
+
+
+
+        }
+
 
 
 
         //draw the image of the Fish
-		g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
-        g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
-        g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
         g.drawRect(nemo.hitbox.x, nemo.hitbox.y, nemo.hitbox.width, nemo.hitbox.height);
         g.drawRect(dory.hitbox.x, dory.hitbox.y, dory.hitbox.width, dory.hitbox.height);
-        g.drawImage(gameover, 0, 0, WIDTH, HEIGHT, null);
-        g.setColor(Color.WHITE);
+        /*g.setColor(Color.WHITE);
         g.setFont(new Font("Times New Roman", Font.BOLD, 200));
-        g.drawString("word",100, 100);
+        g.drawString("word",100, 100);*/
         g.dispose();
 
 		bufferStrategy.show();

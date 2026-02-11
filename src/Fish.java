@@ -45,31 +45,32 @@ public class Fish {
     public void move() {
 
         if (xpos < 0) {
-            xpos =0;
+            xpos =1080;
             ypos = (int)(Math.random()*700);
 
 
         }
-        if (xpos > 970) {
+        if (xpos > 1080) {
             xpos =0;
             ypos = (int)(Math.random()*700);
 
         }
         if (ypos < 0) {
-            dy = -dy;
-            dx = (int)(Math.random()*10); //random movement
+            ypos =1920;
+            xpos = (int)(Math.random()*10); //random movement
 
         }
-        if (ypos > 700-height) {
-            dy = -dy;
-            dx = (int)(Math.random()*10); //random movement
+        if (ypos > 1920-height) {
+            ypos = 0;
+            xpos = (int)(Math.random()*10); //random movement
         }
 
         xpos = xpos + dx;
         ypos = ypos + dy;
         hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
- 
+
     }
+    public void setLives(){}
 }
 
 
