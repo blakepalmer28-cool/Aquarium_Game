@@ -28,7 +28,7 @@ public class Fish2 {
     public Fish2(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
+        dx =3;
         dy =0;
         width = 90;
         height = 80;
@@ -43,23 +43,27 @@ public class Fish2 {
 
         if (xpos < 0) {
             dx = -dx;
+            dy = (int)(Math.random()*10); //random movement
 
         }
         if (xpos > 970) {
             dx=-dx;
+            dy = (int)(Math.random()*10); //random movement
 
         }
         if (ypos < 0) {
             dy = -dy;
+            dx = (int)(Math.random()*10); //random movement
 
         }
         if (ypos > 700 - height) {
             dy = -dy;
+            dx = (int)(Math.random()*10); //random movement
         }
         xpos = xpos + dx;
         ypos = ypos + dy;
         hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
 
-
+        //System.out.println(xpos);
     }
 }

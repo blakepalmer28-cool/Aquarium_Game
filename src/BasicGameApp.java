@@ -48,6 +48,7 @@ public class BasicGameApp implements Runnable {
     public Fish2 dory;
     public Shark bruce;
     public Image backgroundPic;
+    public Image gameover;
 
 
    // Main method definition
@@ -65,6 +66,26 @@ public class BasicGameApp implements Runnable {
 	public BasicGameApp() {
       
       setUpGraphics();
+
+        //range 0-9
+        int randx = (int) (Math.random() * 10);
+        int randy = (int) (Math.random() * 700);
+        //0.0001-0.9999
+        //0.001 - 9.999
+        //0.9
+
+        //range to 1-10
+        randx = (int) (Math.random() * 10);
+        //0.001 = 0.999
+        //0.1- 9.99
+        //0-9
+        //1-10
+
+        //range 1-1000
+        randx = (int) (Math.random() * 1000) + 1;
+
+        //range 1-700
+        randy = (int) (Math.random() * 10) + 1;
        
       //variable and objects
       //create (construct) the objects needed for the game and load up
@@ -76,9 +97,12 @@ public class BasicGameApp implements Runnable {
         doryPic = Toolkit.getDefaultToolkit().getImage("Dory.png"); //load the picture
         brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.png"); //load the picture
         backgroundPic = Toolkit.getDefaultToolkit().getImage("Water.png"); //load the picture
+        gameover = Toolkit.getDefaultToolkit().getImage("gameOver.png"); //load the picture
 
 
-	}// BasicGameApp()
+
+
+    }// BasicGameApp()
 
    
 //*******************************************************************************
@@ -104,11 +128,11 @@ public class BasicGameApp implements Runnable {
 	{
       //calls the move( ) code in the objects
 		nemo.move();
-        nemo.dx = 2;
+        //nemo.dx = 2;
         dory.move();
-        dory.dx=2;
+        //dory.dx=2;
         bruce.move();
-        bruce.dx=1;
+        //bruce.dx=1;
         crashing();
 
 	}
@@ -122,9 +146,10 @@ public class BasicGameApp implements Runnable {
             bruce.dy = -bruce.dy;
             nemo.dy = -nemo.dy;
             nemo.isAlive = false;
-            nemo.xpos = -222;
-            nemo.ypos = -222;
-            render();
+            nemo.xpos = -22222;
+            nemo.ypos = -22222;
+
+
 
         }
         if (bruce.hitbox.intersects(dory.hitbox) && dory.isCrashing == false) {
@@ -141,8 +166,11 @@ public class BasicGameApp implements Runnable {
 
         }
 
-        if (!nemo.hitbox.intersects(dory.hitbox)) {
+        if (!bruce.hitbox.intersects(dory.hitbox)) {
             dory.isCrashing = false;
+        }
+        if(bruce.isAlive && dory.isAlive) {
+
         }
     }
 	
@@ -193,12 +221,18 @@ public class BasicGameApp implements Runnable {
 		g.clearRect(0, 0, WIDTH, HEIGHT);
         g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
 
-      //draw the image of the Fish
+
+
+        //draw the image of the Fish
 		g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
         g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
         g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
         g.drawRect(nemo.hitbox.x, nemo.hitbox.y, nemo.hitbox.width, nemo.hitbox.height);
         g.drawRect(dory.hitbox.x, dory.hitbox.y, dory.hitbox.width, dory.hitbox.height);
+        g.drawImage(gameover, 0, 0, WIDTH, HEIGHT, null);
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Times New Roman", Font.BOLD, 200));
+        g.drawString("word",100, 100);
         g.dispose();
 
 		bufferStrategy.show();

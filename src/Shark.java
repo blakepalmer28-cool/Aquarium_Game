@@ -43,18 +43,22 @@ public class Shark {
 
         if (xpos < 0) {
             dx = -dx;
+            dy = (int)(Math.random()*10); //random movement
 
         }
         if (xpos > 970) {
             dx = -dx;
+            dy = (int)(Math.random()*10); //random movement
 
         }
         if (ypos < 0) {
             dy = -dy;
+            dx = (int)(Math.random()*10); //random movement
 
         }
         if (ypos > 700-height) {
             dy = -dy;
+            dx = (int)(Math.random()*10); //random movement
         }
 
         xpos = xpos + dx;

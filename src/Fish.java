@@ -31,7 +31,7 @@ public class Fish {
     public Fish(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =1;
+        dx =3;
         dy =0;
         width = 50;
         height = 50;
@@ -45,19 +45,24 @@ public class Fish {
     public void move() {
 
         if (xpos < 0) {
-            dx = -dx;
+            xpos =0;
+            ypos = (int)(Math.random()*700);
+
 
         }
         if (xpos > 970) {
-            dx = -dx;
+            xpos =0;
+            ypos = (int)(Math.random()*700);
 
         }
         if (ypos < 0) {
             dy = -dy;
+            dx = (int)(Math.random()*10); //random movement
 
         }
         if (ypos > 700-height) {
             dy = -dy;
+            dx = (int)(Math.random()*10); //random movement
         }
 
         xpos = xpos + dx;
