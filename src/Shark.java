@@ -19,8 +19,8 @@ public class Shark {
         ypos = pYpos;
         dx =2;
         dy =0;
-        width = 300;
-        height = 200;
+        width = 250;
+        height = 240;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);
 
@@ -35,7 +35,7 @@ public class Shark {
             dy = (int)(Math.random()*10); //random movement
 
         }
-        if (xpos > 1400) {
+        if (xpos > 1400-width) {
             dx = -dx;
             dy = (int)(Math.random()*10); //random movement
 

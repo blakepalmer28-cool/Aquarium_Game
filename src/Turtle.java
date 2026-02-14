@@ -21,11 +21,11 @@ public class Turtle {
         ypos = pYpos;
         dx =1;
         dy =0;
-        width = 190;
-        height = 180;
+        width = 290;
+        height = 230;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);
-        lives =4;
+        lives =5;
 
 
     } // constructor
@@ -33,25 +33,20 @@ public class Turtle {
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
         if (xpos < 0) {
-            xpos =1400;
-            ypos = (int)(Math.random()*851);
+            dx=-dx;
 
 
         }
-        if (xpos > 1400) {
-            xpos =0;
-            ypos = (int)(Math.random()*851);
+        if (xpos > 1400-width) {
+            dx=-dx;
 
         }
         if (ypos < 0) {
-            ypos =850;
-            xpos = (int)(Math.random()*1400); //random movement
+            dy=-dy;
 
         }
         if (ypos > 850-height) {
-            ypos = 0;
-            xpos = (int)(Math.random()*1400); //random movement
-
+            dy=-dy;
         }
         xpos = xpos + dx;
         ypos = ypos + dy;

@@ -72,7 +72,7 @@ public class BasicGameApp implements Runnable {
         nemo = new Fish(700, 100);
         dory = new Fish2(500, 100);
         bruce = new Shark(50, 100);
-        crush = new Turtle(0, 0);
+        crush = new Turtle(20, 650);
         //images
         nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
         doryPic = Toolkit.getDefaultToolkit().getImage("Dory.png"); //load the picture

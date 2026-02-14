@@ -28,6 +28,7 @@ public class Fish2 {
         height = 80;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);
+        lives = 3;
 
 
     } // constructor
@@ -40,7 +41,7 @@ public class Fish2 {
             dy = (int)(Math.random()*10); //random movement
 
         }
-        if (xpos > 1400) {
+        if (xpos > 1400-width) {
             dx=-dx;
             dy = (int)(Math.random()*10); //random movement
 

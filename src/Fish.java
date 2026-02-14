@@ -39,7 +39,7 @@ public class Fish {
 
 
         }
-        if (xpos > 1400) {
+        if (xpos > 1400-width) {
             xpos =0;
             ypos = (int)(Math.random()*851);
 
