@@ -2,29 +2,18 @@ import java.awt.*;
 
 public class Shark {
 
-
-    //VARIABLE DECLARATION SECTION
-    //Here's where you state which variables you are going to use.
-    public String name;                //holds the name of the hero
+    public String name;                //holds the name of the enemy
     public int xpos;                //the x position
     public int ypos;                //the y position
-    public int dx;                    //the speed of the hero in the x direction
-    public int dy;                    //the speed of the hero in the y direction
+    public int dx;                    //the speed of the enemy in the x direction
+    public int dy;                    //the speed of the enemy in the y direction
     public int width;
     public int height;
-    public boolean isAlive;//a boolean to denote if the hero is alive or dead.
-    public Rectangle hitbox;
-    public boolean isCrashing;
+    public boolean isAlive; //a boolean to denote if the enemy is alive or dead.
+    public Rectangle hitbox; // hitbox of the character
 
 
-    // METHOD DEFINITION SECTION
 
-    // Constructor Definition
-    // A constructor builds the object when called and sets variable values.
-
-
-    //This is a SECOND constructor that takes 3 parameters.  This allows us to specify the hero's name and position when we build it.
-    // if you put in a String, an int and an int the program will use this constructor instead of the one above.
     public Shark(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
@@ -33,12 +22,12 @@ public class Shark {
         width = 300;
         height = 200;
         isAlive = true;
-        hitbox = new Rectangle(xpos,ypos,width,height);//a boolean to denote if the hero is alive or dead.
+        hitbox = new Rectangle(xpos,ypos,width,height);
 
 
     } // constructor
 
-    //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
+    //The move method.  Everytime this is run (or "called") the enemy's x position and y position change by dx and dy
     public void move() {
 
         if (xpos < 0) {
@@ -46,7 +35,7 @@ public class Shark {
             dy = (int)(Math.random()*10); //random movement
 
         }
-        if (xpos > 970) {
+        if (xpos > 1400) {
             dx = -dx;
             dy = (int)(Math.random()*10); //random movement
 
@@ -56,7 +45,7 @@ public class Shark {
             dx = (int)(Math.random()*10); //random movement
 
         }
-        if (ypos > 700-height) {
+        if (ypos > 850-height) {
             dy = -dy;
             dx = (int)(Math.random()*10); //random movement
         }
