@@ -14,18 +14,26 @@ public class Fish {
     public Rectangle hitbox; //hitbox of the hero/character
     public int lives; //an integer for number of lives
     public boolean isCrashing; //a boolean to denote if the character is crashing or not
+    public boolean isUp;
+    public boolean isDown;
+    public boolean isRight;
+    public boolean isLeft;
 
 
     public Fish(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =4;
+        dx =0;
         dy =0;
         width = 50;
         height = 50;
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);
         lives = 3;
+        isUp = false;
+        isDown = false;
+        isRight = false;
+        isLeft = false;
 
 
     } // constructor
@@ -33,7 +41,25 @@ public class Fish {
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
-        if (xpos < 0) {
+        if (isUp ==true){
+            dy =-2;
+        }
+
+        if (isUp ==false && isDown ==true &&isRight ==true &&isRight == true){
+            dy=0;
+        }
+        if (isDown ==true){
+            dy =2;
+        }
+        if(isRight ==true){
+            dx = 2;
+        }
+        if(isLeft ==true){
+            dx =-2;
+        }
+
+
+        if (xpos < 0) {//change this to bounce so that it wont glitch out
             xpos =1400;
             ypos = (int)(Math.random()*851);
 

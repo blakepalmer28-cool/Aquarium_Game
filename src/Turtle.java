@@ -14,7 +14,7 @@ public class Turtle {
     public Rectangle hitbox; //hitbox of the hero/character
     public int lives; //an integer for number of lives
     public boolean isCrashing; //a boolean to denote if the character is crashing or not
-//make sure to finalize idea
+
 
     public Turtle(int pXpos, int pYpos) {
         xpos = pXpos;

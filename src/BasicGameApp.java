@@ -13,6 +13,10 @@
 
 //Graphics Libraries
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.awt.*;
 import javax.swing.JFrame;
@@ -22,7 +26,7 @@ import javax.swing.JPanel;
 //*******************************************************************************
 // Class Definition Section
 
-public class BasicGameApp implements Runnable {
+public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
     //Variable Definition Section
     //Declare the variables used in the program
@@ -223,6 +227,13 @@ public class BasicGameApp implements Runnable {
 
             panel.add(canvas);  // adds the canvas to the panel.
 
+            //step 2: add key listener to canvas
+            canvas.addKeyListener(this);
+
+            //step 2: ad
+            canvas.addMouseListener(this);
+
+
             // frame operations
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  //makes the frame close and exit nicely
             frame.pack();  //adjusts the frame and its contents so the sizes are at their default or larger
@@ -278,5 +289,89 @@ public class BasicGameApp implements Runnable {
 
 
         }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
     }
 
+    @Override
+    public void keyPressed(KeyEvent e) {
+        System.out.println(e.getKeyCode());
+
+        if (e.getKeyCode() == 38) { //upo arrow
+            System.out.println("Going up");
+            nemo.isUp = true;
+
+        }
+        if (e.getKeyCode() == 40) { //down arrow
+            System.out.println("Going down");
+            nemo.isDown = true;
+
+        }
+        if (e.getKeyCode() == 39) { //right arrow
+            System.out.println("Going right");
+            nemo.isRight = true;
+
+        }
+        if (e.getKeyCode() == 37) { //right arrow
+            System.out.println("Going left");
+            nemo.isLeft = true;
+
+        }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("I stopped touching " +e.getKeyCode());
+
+        if (e.getKeyCode() ==38){//38 is up arrow
+            System.out.println("Not going up");
+            nemo.isUp = false;
+        }
+
+        if (e.getKeyCode() ==40){//38 is up arrow
+            System.out.println("Not going down");
+            nemo.isDown = false;
+        }
+
+        if (e.getKeyCode() ==39){//39 is right arrow
+            System.out.println("not going left");
+            nemo.isRight = false;
+        }
+        if (e.getKeyCode() ==37){//39 is right arrow
+            System.out.println("not going right");
+            nemo.isLeft = false;
+        }
+
+
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        //i can make an if mouse released the game pauses and a pause screen enters and when cliceked again or like when clicked unpause button game resumes idk
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+}
