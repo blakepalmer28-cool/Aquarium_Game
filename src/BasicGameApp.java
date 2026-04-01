@@ -293,6 +293,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     @Override
     public void keyTyped(KeyEvent e) {
 
+
     }
 
     @Override

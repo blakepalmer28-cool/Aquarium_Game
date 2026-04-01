@@ -23,8 +23,8 @@ public class Fish {
     public Fish(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =0;
-        dy =0;
+        dx =2;
+        dy =2;
         width = 50;
         height = 50;
         isAlive = true;
@@ -37,7 +37,7 @@ public class Fish {
 
 
     } // constructor
-
+//nemo
     //The move method.  Everytime this is run (or "called") the hero's x position and y position change by dx and dy
     public void move() {
 
@@ -45,7 +45,7 @@ public class Fish {
             dy =-2;
         }
 
-        if (isUp ==false && isDown ==true &&isRight ==true &&isRight == true){
+        if (isUp ==false && isDown ==false){
             dy=0;
         }
         if (isDown ==true){
@@ -53,6 +53,9 @@ public class Fish {
         }
         if(isRight ==true){
             dx = 2;
+        }
+        if (isRight ==false && isLeft ==false){
+            dx=0;
         }
         if(isLeft ==true){
             dx =-2;

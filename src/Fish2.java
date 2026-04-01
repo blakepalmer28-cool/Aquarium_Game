@@ -58,5 +58,6 @@ public class Fish2 {
         xpos = xpos + dx;
         ypos = ypos + dy;
         hitbox = new Rectangle(xpos,ypos,width,height);
+        //make it less glitchy
     }
 }

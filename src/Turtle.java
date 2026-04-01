@@ -26,6 +26,7 @@ public class Turtle {
         isAlive = true;
         hitbox = new Rectangle(xpos,ypos,width,height);
         lives =5;
+        //add array that counts by groups based on how much it seims or something
 
 
     } // constructor
