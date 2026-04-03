@@ -23,8 +23,8 @@ public class Fish {
     public Fish(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =2;
-        dy =2;
+        dx =100;
+        dy =100;
         width = 50;
         height = 50;
         isAlive = true;
@@ -74,13 +74,13 @@ public class Fish {
 
         }
         if (ypos < 0) {
-            ypos =850;
-            xpos = (int)(Math.random()*1400); //random movement
+            dy =-dy;//random movement
+            ypos = 0;
 
         }
         if (ypos > 850-height) {
-            ypos = 0;
-            xpos = (int)(Math.random()*1400); //random movement
+            ypos = 850-height;
+            dy =-dy; //random movement
         }
 
         xpos = xpos + dx;

@@ -73,7 +73,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         setUpGraphics();
         //create (construct) the objects needed for the game and load up
         //names
-        nemo = new Fish(700, 100);
+        nemo = new Fish(1300, 750);
         dory = new Fish2(500, 100);
         bruce = new Shark(50, 100);
         crush = new Turtle(20, 650);
