@@ -132,11 +132,14 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
         if (!bruce.hitbox.intersects(nemo.hitbox)) {
             nemo.isCrashing = false;
+            bruce.isAlive=true;
         }
         if (!bruce.hitbox.intersects(nemo.hitbox)) {
             dory.isCrashing = false;
+            bruce.isAlive=true;
         }
         if (!bruce.hitbox.intersects(crush.hitbox)){
+            crush.isCrashing = false;
             crush.isCrashing = false;
         }
         //if statement that minus a life off of nemo if bruce intersects nemo
@@ -274,6 +277,10 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
 
             }
+            g.setColor(Color.white);
+            g.fillRect(10,20,90,40);
+            g.setColor(Color.orange);
+            g.drawString("Nemo:"+nemo.score,10,35);
 
 
             //draw the image of the Fish
@@ -357,6 +364,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+
 
     }
 

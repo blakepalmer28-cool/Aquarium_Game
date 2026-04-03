@@ -18,13 +18,14 @@ public class Fish {
     public boolean isDown;
     public boolean isRight;
     public boolean isLeft;
+    public int score;
 
 
     public Fish(int pXpos, int pYpos) {
         xpos = pXpos;
         ypos = pYpos;
-        dx =100;
-        dy =100;
+        dx =10;
+        dy =10;
         width = 50;
         height = 50;
         isAlive = true;
@@ -63,14 +64,16 @@ public class Fish {
 
 
         if (xpos < 0) {//change this to bounce so that it wont glitch out
-            xpos =1400;
-            ypos = (int)(Math.random()*851);
+            dx=-dx;
+            xpos =0;
+
 
 
         }
         if (xpos > 1400-width) {
             xpos =0;
             ypos = (int)(Math.random()*851);
+            score = score+1;
 
         }
         if (ypos < 0) {
