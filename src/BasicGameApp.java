@@ -53,7 +53,9 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public Shark bruce;
     //Declare the images used in the program
     public Image backgroundPic;
+    public Image startPic;
     public Image gameover;
+    public Image youWin;
     public Image endScene;
 
 
@@ -83,8 +85,11 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.png"); //load the picture
         crushPic = Toolkit.getDefaultToolkit().getImage("Crush.png"); //load the picture
         backgroundPic = Toolkit.getDefaultToolkit().getImage("Water.png"); //load the picture
-        gameover = Toolkit.getDefaultToolkit().getImage("gameOver.png"); //load the picture
-        endScene = Toolkit.getDefaultToolkit().getImage("endScene.jpg"); //load the picture
+        endScene = Toolkit.getDefaultToolkit().getImage("winscreen.jpg"); //load the picture
+        gameover = Toolkit.getDefaultToolkit().getImage("nemovbruce.png"); //load the picture
+        youWin = Toolkit.getDefaultToolkit().getImage("gameOver.png"); //load the picture
+        startPic = Toolkit.getDefaultToolkit().getImage("startPic.png"); //load the picture
+
 
 
     }
@@ -133,6 +138,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         if (!bruce.hitbox.intersects(nemo.hitbox)) {
             nemo.isCrashing = false;
             bruce.isAlive=true;
+            nemo.dx =(int)(Math.random()*1000);
+            nemo.dy = (int)(Math.random()*1000);
         }
         if (!bruce.hitbox.intersects(nemo.hitbox)) {
             dory.isCrashing = false;
