@@ -67,7 +67,7 @@ public class Fish {
             dx=-dx;
             xpos =0;
 
-
+//changes direction if it huts an area
 
         }
         if (xpos > 1400-width) {

@@ -148,7 +148,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         if (!bruce.hitbox.intersects(crush.hitbox)){
             crush.isCrashing = false;
             crush.isCrashing = false;
-        }
+        }//generate ideas here
         //if statement that minus a life off of nemo if bruce intersects nemo
         if (bruce.hitbox.intersects(nemo.hitbox) && nemo.isAlive == true && nemo.isCrashing == false) {
             System.out.println("Nemo - 1 life");
