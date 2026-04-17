@@ -16,8 +16,6 @@ public class Fish2 {
     public boolean isCrashing; //a boolean to denote if the character is crashing or not
 
 
-//fish2 java
-
 
     public Fish2(int pXpos, int pYpos) {
         xpos = pXpos;
