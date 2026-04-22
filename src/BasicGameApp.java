@@ -148,7 +148,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         if (!bruce.hitbox.intersects(crush.hitbox)){
             crush.isCrashing = false;
             crush.isCrashing = false;
-        }
+        }w
         //if statement that minus a life off of nemo if bruce intersects nemo
         if (bruce.hitbox.intersects(nemo.hitbox) && nemo.isAlive == true && nemo.isCrashing == false) {
             System.out.println("Nemo - 1 life");
@@ -277,12 +277,10 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             if (crush.isAlive) {
                 g.drawImage(crushPic, crush.xpos, crush.ypos, crush.width, crush.height, null);
             }
-            //Game over screen taht shows if nemo,dory, and bruce are not alive
+            //Game over screen that shows if nemo,dory, and bruce are not alive
             if (nemo.isAlive == false && dory.isAlive == false && crush.isAlive == false) {
                 g.drawImage(endScene, 0, 0, WIDTH, HEIGHT, null);
                 g.drawImage(gameover, 10, 50, WIDTH, HEIGHT, null);
-
-
             }
             g.setColor(Color.white);
             g.fillRect(10,20,90,40);
