@@ -57,6 +57,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public Image gameover;
     public Image youWin;
     public Image endScene;
+    public boolean startGame;
 
 
     // Main method definition
@@ -89,6 +90,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         gameover = Toolkit.getDefaultToolkit().getImage("nemovbruce.png"); //load the picture
         youWin = Toolkit.getDefaultToolkit().getImage("gameOver.png"); //load the picture
         startPic = Toolkit.getDefaultToolkit().getImage("startPic.png"); //load the picture
+        startGame = false;
 
 
 
@@ -114,6 +116,11 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
 
     public void moveThings() {
+        if (startGame ==true)
+            nemo.move();
+        dory.move();
+        bruce.move();
+        crush.move();
         //calls the move( ) code in the objects
         nemo.move();
         //nemo move
@@ -148,7 +155,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         if (!bruce.hitbox.intersects(crush.hitbox)){
             crush.isCrashing = false;
             crush.isCrashing = false;
-        }w
+        }
         //if statement that minus a life off of nemo if bruce intersects nemo
         if (bruce.hitbox.intersects(nemo.hitbox) && nemo.isAlive == true && nemo.isCrashing == false) {
             System.out.println("Nemo - 1 life");
@@ -261,6 +268,15 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
         //paints things on the screen using bufferStrategy
         private void render () {
+            if (startGame ==true) {
+                g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
+
+                //draw the image of the astronaut
+                g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
+
+                if (astro2.isAlive == true) {
+                    g.drawImage(astroPic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
+                }
             Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
             g.clearRect(0, 0, WIDTH, HEIGHT);
             //background pick being drawn
@@ -277,7 +293,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             if (crush.isAlive) {
                 g.drawImage(crushPic, crush.xpos, crush.ypos, crush.width, crush.height, null);
             }
-            //Game over screen that shows if nemo,dory, and bruce are not alive
+            //Game over screen that shows if nemo.dory, and bruce are not alive
             if (nemo.isAlive == false && dory.isAlive == false && crush.isAlive == false) {
                 g.drawImage(endScene, 0, 0, WIDTH, HEIGHT, null);
                 g.drawImage(gameover, 10, 50, WIDTH, HEIGHT, null);
@@ -369,6 +385,12 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+        System.out.println(e.getPoint());
+        Rectangle pointHitbox = new Rectangle(e.getX(),e.getY(),1,1);
+        if(//startHitbox.intersects(pointHitbox)){
+            System.out.println("start game");
+            startGame = true;
+        }
 
 
     }
