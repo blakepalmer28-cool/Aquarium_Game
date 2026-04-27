@@ -1,12 +1,3 @@
-//Basic Game Application
-//Version 2
-// Basic Object, Image, Movement
-// Fish moves to the right.
-// Threaded
-
-//K. Chun 8/2018
-
-//*******************************************************************************
 //Import Section
 //Add Java libraries needed for the game
 //import java.awt.Canvas;
@@ -86,10 +77,10 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         brucePic = Toolkit.getDefaultToolkit().getImage("Bruce.png"); //load the picture
         crushPic = Toolkit.getDefaultToolkit().getImage("Crush.png"); //load the picture
         backgroundPic = Toolkit.getDefaultToolkit().getImage("Water.png"); //load the picture
-        endScene = Toolkit.getDefaultToolkit().getImage("winscreen.jpg"); //load the picture
-        gameover = Toolkit.getDefaultToolkit().getImage("nemovbruce.png"); //load the picture
-        youWin = Toolkit.getDefaultToolkit().getImage("gameOver.png"); //load the picture
-        startPic = Toolkit.getDefaultToolkit().getImage("startPic.png"); //load the picture
+        endScene = Toolkit.getDefaultToolkit().getImage("endScene.jpg"); //load the picture
+        gameover = Toolkit.getDefaultToolkit().getImage("gameOver.png"); //load the picture
+        youWin = Toolkit.getDefaultToolkit().getImage("winscreen.jpg"); //load the picture
+        startPic = Toolkit.getDefaultToolkit().getImage("nemovbruce.png"); //load the picture
         startGame = false;
 
 
@@ -116,20 +107,17 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
 
     public void moveThings() {
-        if (startGame ==true)
+        if (startGame ==true) {
+            //calls the move( ) code in the objects
             nemo.move();
-        dory.move();
-        bruce.move();
-        crush.move();
-        //calls the move( ) code in the objects
-        nemo.move();
-        //nemo move
-        dory.move();
-        //dory move
-        bruce.move();
-        //bruce move
-        crush.move();
-        //if dory,nemo, and crush are not alive bruce stops moving
+            //nemo move
+            dory.move();
+            //dory move
+            bruce.move();
+            //bruce move
+            crush.move();
+            //if dory,nemo, and crush are not alive bruce stops moving
+        }
         if (dory.isAlive == false && nemo.isAlive == false && crush.isAlive ==false) {
             bruce.dx = 0;
             bruce.dy = 0;
@@ -268,40 +256,37 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
         //paints things on the screen using bufferStrategy
         private void render () {
-            if (startGame ==true) {
-                g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
-
-                //draw the image of the astronaut
-                g.drawImage(astroPic, astro.xpos, astro.ypos, astro.width, astro.height, null);
-
-                if (astro2.isAlive == true) {
-                    g.drawImage(astroPic, astro2.xpos, astro2.ypos, astro2.width, astro2.height, null);
-                }
             Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
             g.clearRect(0, 0, WIDTH, HEIGHT);
-            //background pick being drawn
-            g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
-            //bruce image drawn
-            g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
-            //draw characters when alive
-            if (nemo.isAlive) {
-                g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
+            if (startGame == false) {
+                g.drawImage(startPic, 0, 0, WIDTH, HEIGHT, null);
             }
-            if (dory.isAlive) {
-                g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
-            }
-            if (crush.isAlive) {
-                g.drawImage(crushPic, crush.xpos, crush.ypos, crush.width, crush.height, null);
-            }
-            //Game over screen that shows if nemo.dory, and bruce are not alive
-            if (nemo.isAlive == false && dory.isAlive == false && crush.isAlive == false) {
-                g.drawImage(endScene, 0, 0, WIDTH, HEIGHT, null);
-                g.drawImage(gameover, 10, 50, WIDTH, HEIGHT, null);
-            }
-            g.setColor(Color.white);
-            g.fillRect(10,20,90,40);
-            g.setColor(Color.orange);
-            g.drawString("Nemo:"+nemo.score,10,35);
+                if (startGame == true) {
+                    //background pick being drawn
+                    g.drawImage(backgroundPic, 0, 0, WIDTH, HEIGHT, null);
+                    //bruce image drawn
+                    g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
+                    //draw characters when alive
+                    if (nemo.isAlive) {
+                        g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
+                    }
+                    if (dory.isAlive) {
+                        g.drawImage(doryPic, dory.xpos, dory.ypos, dory.width, dory.height, null);
+                    }
+                    if (crush.isAlive) {
+                        g.drawImage(crushPic, crush.xpos, crush.ypos, crush.width, crush.height, null);
+                    }
+                    //Game over screen that shows if nemo.dory, and bruce are not alive
+                    if (nemo.isAlive == false && dory.isAlive == false && crush.isAlive == false) {
+                        g.drawImage(endScene, 0, 0, WIDTH, HEIGHT, null);
+                        g.drawImage(gameover, 10, 50, WIDTH, HEIGHT, null);
+                    }
+
+                    g.setColor(Color.white);
+                    g.fillRect(10, 20, 90, 40);
+                    g.setColor(Color.orange);
+                    g.drawString("Nemo:" + nemo.score, 10, 35);
+                }
 
 
             //draw the image of the Fish
@@ -385,15 +370,9 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getPoint());
-        Rectangle pointHitbox = new Rectangle(e.getX(),e.getY(),1,1);
-        if(//startHitbox.intersects(pointHitbox)){
-            System.out.println("start game");
             startGame = true;
         }
 
-
-    }
 
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -410,4 +389,4 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
-}
+    }
