@@ -135,6 +135,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             bruce.isAlive=true;
             nemo.dx =(int)(Math.random()*1000);
             nemo.dy = (int)(Math.random()*1000);
+
         }
         if (!bruce.hitbox.intersects(nemo.hitbox)) {
             dory.isCrashing = false;
@@ -285,7 +286,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
                     g.setColor(Color.white);
                     g.fillRect(10, 20, 90, 40);
                     g.setColor(Color.orange);
-                    g.drawString("Nemo:" + nemo.score, 10, 35);
+                    g.drawString("Nemo Score:" + nemo.score, 10, 35);
+                    g.drawString("Nemo Lives:" + nemo.score, 10, 55);
                 }
 
 
