@@ -42,6 +42,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public Turtle crush;
     public Fish2 dory;
     public Shark bruce;
+    public Shark[] sharks = new Shark[2];
+    public int targetScore = 5;
     //Declare the images used in the program
     public Image backgroundPic;
     public Image startPic;
@@ -49,6 +51,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     public Image youWin;
     public Image endScene;
     public boolean startGame;
+
 
 
     // Main method definition
@@ -70,6 +73,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         nemo = new Fish(1300, 750);
         dory = new Fish2(500, 100);
         bruce = new Shark(50, 100);
+        sharks[0] = new Shark(50,100);
+        sharks[1] = new Shark(700,400);
         crush = new Turtle(20, 650);
         //images
         nemoPic = Toolkit.getDefaultToolkit().getImage("Nemo.png"); //load the picture
@@ -82,6 +87,7 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
         youWin = Toolkit.getDefaultToolkit().getImage("winscreen.jpg"); //load the picture
         startPic = Toolkit.getDefaultToolkit().getImage("nemovbruce.png"); //load the picture
         startGame = false;
+
 
 
 
@@ -115,6 +121,9 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             //dory move
             bruce.move();
             //bruce move
+            sharks[0].move();
+            sharks[1].move();
+            //bruce array move
             crush.move();
             //if dory,nemo, and crush are not alive bruce stops moving
         }
@@ -261,6 +270,20 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
             g.clearRect(0, 0, WIDTH, HEIGHT);
             if (startGame == false) {
                 g.drawImage(startPic, 0, 0, WIDTH, HEIGHT, null);
+
+                //click to start text
+                g.setColor(Color.white);
+                g.setFont(new Font("Arial", Font.BOLD,35));
+                g.drawString("Click Anywhere To Start!",500,680);
+
+                g.setColor(Color.white);
+                g.setFont(new Font("Arial", Font.BOLD,25));
+                g.drawString("Goal: Help Nemo escape.",550,720);
+                g.drawString("Get Nemo off the right",550,750);
+                g.drawString("side 5 Times to Win!",550,780);
+
+                //goal text
+
             }
                 if (startGame == true) {
                     //background pick being drawn
@@ -268,6 +291,8 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
                     //bruce image drawn
                     g.drawImage(brucePic, bruce.xpos, bruce.ypos, bruce.width, bruce.height, null);
                     //draw characters when alive
+                    g.drawImage(brucePic,sharks[0].xpos, sharks[0].ypos, sharks[0].width,sharks[0].height,null);
+                    g.drawImage(brucePic,sharks[1].xpos, sharks[1].ypos, sharks[1].width,sharks[1].height,null);
                     if (nemo.isAlive) {
                         g.drawImage(nemoPic, nemo.xpos, nemo.ypos, nemo.width, nemo.height, null);
                     }
@@ -282,12 +307,16 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
                         g.drawImage(endScene, 0, 0, WIDTH, HEIGHT, null);
                         g.drawImage(gameover, 10, 50, WIDTH, HEIGHT, null);
                     }
+                    if (nemo.score >= targetScore){
+                        g.drawImage(youWin,0, 0, WIDTH, HEIGHT, null);
+                    }
 
                     g.setColor(Color.white);
-                    g.fillRect(10, 20, 90, 40);
+                    g.fillRect(10, 20, 90, 60);
                     g.setColor(Color.orange);
                     g.drawString("Nemo Score:" + nemo.score, 10, 35);
-                    g.drawString("Nemo Lives:" + nemo.score, 10, 55);
+                    g.drawString("Nemo Lives:" + nemo.lives, 10, 55);
+                    g.drawString("Target Score:" + targetScore, 10, 75);
                 }
 
 
@@ -373,6 +402,9 @@ public class BasicGameApp implements Runnable, KeyListener, MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
             startGame = true;
+            if (nemo.score == 2){
+
+            }
         }
 
 

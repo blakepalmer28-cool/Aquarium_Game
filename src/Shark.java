@@ -7,8 +7,8 @@ public class Shark {
     public int ypos;                //the y position
     public int dx;                    //the speed of the enemy in the x direction
     public int dy;                    //the speed of the enemy in the y direction
-    public int width;
-    public int height;
+    public int width; // the width of the shark
+    public int height; // the height of the shark
     public boolean isAlive; //a boolean to denote if the enemy is alive or dead.
     public Rectangle hitbox; // hitbox of the character
 

@@ -8,8 +8,8 @@ public class Fish2 {
     public int ypos;                //the y position
     public int dx;                    //the speed of the hero in the x direction
     public int dy;                    //the speed of the hero in the y direction
-    public int width;
-    public int height;
+    public int width; // the width of dory
+    public int height; // the height of dory
     public boolean isAlive; //a boolean to denote if the hero is alive or dead.
     public Rectangle hitbox; //hitbox of the hero/character
     public int lives; //an integer for number of lives

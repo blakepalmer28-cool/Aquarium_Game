@@ -14,12 +14,12 @@ public class Fish {
     public Rectangle hitbox; //hitbox of the hero/character
     public int lives; //an integer for number of lives
     public boolean isCrashing; //a boolean to denote if the character is crashing or not
-    public boolean isUp;
-    public boolean isDown;
-    public boolean isRight;
-    public boolean isLeft;
-    public int score;
-
+    public boolean isUp; //happens if up arrow is pressed
+    public boolean isDown; //happens if down arrow is pressed
+    public boolean isRight; //happens if right arrow is pressed
+    public boolean isLeft; //happens if left arrow is pressed
+    public int score; //tracks how any times nemo crossed the screen
+    public int targetScore; //target score for the user to achieve in order to win
 
     public Fish(int pXpos, int pYpos) {
         xpos = pXpos;
@@ -35,6 +35,7 @@ public class Fish {
         isDown = false;
         isRight = false;
         isLeft = false;
+        targetScore = 5;
 
 
     } // constructor
@@ -75,6 +76,7 @@ public class Fish {
                 xpos = 0;
                 ypos = (int) (Math.random() * 851);
                 score = score + 1;
+
 
             }
             if (ypos < 0) {
